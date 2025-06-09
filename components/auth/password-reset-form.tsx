@@ -78,17 +78,17 @@ export function PasswordResetForm({
     setVerificationCodeDialogOpen(open);
   };
 
-  function handleNewPasswordDialogOpenChange(open: boolean) {
+  const handleNewPasswordDialogOpenChange = (open: boolean) => {
     newPasswordForm.reset()
     otpForm.reset();
     setNewPasswordDialogOpen(open);
   }
 
-  function onEmailSubmit() {
+  const onEmailSubmit = () => {
     setVerificationCodeDialogOpen(true);
   }
 
-  function onVerificationCodeSubmit() {
+  const onVerificationCodeSubmit = () => {
     setVerificationCodeDialogOpen(false);
     setNewPasswordDialogOpen(true);
     
@@ -100,7 +100,7 @@ export function PasswordResetForm({
     newPasswordForm.reset()
     otpForm.reset();
     toast.success('Password reset successfully. You can now login with your new password.');
-    router.push('/login');
+    router.push('admin/login');
   }
 
   return (
