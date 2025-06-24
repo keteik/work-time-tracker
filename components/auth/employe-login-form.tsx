@@ -10,11 +10,11 @@ import { Input } from '../ui/input';
 import { InputEvent, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import dayjs from 'dayjs';
+import { employeeIds } from "../../data" // Assuming you have a data file with admin credentials
 
 const employeeLoginFormSchema = z.object({
   employeeId: z.string().min(1, 'Your ID is required').max(10).regex(/^\d+$/, 'Employee ID must be numeric'),
 })
-
 
 export function UserLoginForm({
   className,
@@ -32,8 +32,16 @@ export function UserLoginForm({
     });
 
   function handleEmployeeLogin() {
-    router.push('/employee');
+    const formInputEmployeeId = employeeLoginForm.getValues('employeeId').trim();
+    const findEmployeeId = employeeIds.find(id => id === formInputEmployeeId);
 
+    if (!findEmployeeId) {
+      return employeeLoginForm.setError('employeeId', {
+        message: 'Invalid Employee ID',
+      });
+    }
+
+    router.push('/employee');
   }
 
    const handleBeforeEmployeeIDInput = (e: InputEvent<HTMLInputElement>) => {

@@ -1,6 +1,6 @@
 import { PasswordResetForm } from '../../components/auth/password-reset-form';
 
-export default function Page() {
+export default function PasswordResetConfirmationCodePage() {
   return (
     <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
       <title>Reset password</title>

@@ -27,6 +27,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
 import { REGEXP_ONLY_DIGITS } from 'input-otp'
 import { toast } from "sonner"
+import { admins, passwordResetVerificationCode } from "../../data";
 
 const emailFormSchema = z.object({
   email: z.string().email('Email is invalid'),
@@ -85,13 +86,25 @@ export function PasswordResetForm({
   }
 
   const onEmailSubmit = () => {
+    const formInputAdminEmail = emailForm.getValues('email').trim();
+    const adminEmailExists = admins.some(admin => admin.email === formInputAdminEmail);
+
+    if (!adminEmailExists) {
+      return toast.error('Email not found. Please check your email and try again.');
+    }
+
     setVerificationCodeDialogOpen(true);
   }
 
   const onVerificationCodeSubmit = () => {
+    const formInputVerificationCode = otpForm.getValues('otp').trim();
+
+    if (passwordResetVerificationCode !== formInputVerificationCode) {
+      return toast.error('Invalid verification code. Please check your email and try again.');
+    }
+
     setVerificationCodeDialogOpen(false);
     setNewPasswordDialogOpen(true);
-    
   }
 
   function onNewPasswordSubmit() {
