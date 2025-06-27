@@ -1,15 +1,15 @@
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import { Geist, Geist_Mono } from 'next/font/google';
+import './globals.css';
 import { Toaster } from 'sonner';
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+  variable: '--font-geist-sans',
+  subsets: ['latin'],
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
 });
 
 export default function RootLayout({
@@ -23,7 +23,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-         <Toaster position="top-center" duration={5000} richColors={true}  />
+        <Toaster position="top-center" duration={5000} richColors={true} />
       </body>
     </html>
   );

@@ -8,5 +8,5 @@ export default function PasswordResetPage() {
         <PasswordResetForm />
       </div>
     </div>
-  )
+  );
 }

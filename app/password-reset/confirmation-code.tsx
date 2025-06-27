@@ -8,5 +8,5 @@ export default function PasswordResetConfirmationCodePage() {
         <PasswordResetForm />
       </div>
     </div>
-  )
+  );
 }
