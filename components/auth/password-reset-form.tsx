@@ -180,8 +180,8 @@ export function PasswordResetForm({
             open={verificationCodeDialogOpen}
             onOpenChange={handlVerificationCodeDialogOpenChange}
           >
-            <DialogContent className="w-[380px] max-w-full h-[260px] max-h-[90vh]">
-              <div className="flex flex-col items-center justify-center text-center gap-4">
+            <DialogContent className="h-[260px] max-h-[90vh] w-[380px] max-w-full">
+              <div className="flex flex-col items-center justify-center gap-4 text-center">
                 <DialogHeader>
                   <DialogTitle>Reset password code</DialogTitle>
                   <DialogDescription>
@@ -235,7 +235,7 @@ export function PasswordResetForm({
             open={newPasswordDialogOpen}
             onOpenChange={handleNewPasswordDialogOpenChange}
           >
-            <DialogContent className="w-[380px] max-w-full h-[260px] max-h-[90vh]">
+            <DialogContent className="h-[260px] max-h-[90vh] w-[380px] max-w-full">
               <DialogHeader>
                 <DialogTitle>New password</DialogTitle>
                 <DialogDescription>Choose a new password</DialogDescription>

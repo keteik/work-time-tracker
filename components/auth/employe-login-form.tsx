@@ -18,6 +18,7 @@ import { InputEvent, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import dayjs from 'dayjs';
 import { employeeIds } from '../../data'; // Assuming you have a data file with admin credentials
+import { toast } from 'sonner';
 
 const employeeLoginFormSchema = z.object({
   employeeId: z
@@ -49,9 +50,7 @@ export function UserLoginForm({
     const findEmployeeId = employeeIds.find((id) => id === formInputEmployeeId);
 
     if (!findEmployeeId) {
-      return employeeLoginForm.setError('employeeId', {
-        message: 'Invalid Employee ID',
-      });
+      return toast.error('Employee not found');
     }
 
     router.push('/employee');
@@ -73,11 +72,11 @@ export function UserLoginForm({
   }, []);
 
   return (
-    <div className={cn('flex h-screen flex-col mt-40', className)} {...props}>
-      <div className="flex justify-center mb-4 text-2xl font-bold">
+    <div className={cn('mt-40 flex h-screen flex-col', className)} {...props}>
+      <div className="mb-4 flex justify-center text-2xl font-bold">
         {dayjs(date).format('HH:mm:ss')}
       </div>
-      <h1 className="text-3xl font-bold mb-4">Login as employee</h1>
+      <h1 className="mb-4 text-3xl font-bold">Login as employee</h1>
       <Form {...employeeLoginForm}>
         <form
           onSubmit={employeeLoginForm.handleSubmit(handleEmployeeLogin)}

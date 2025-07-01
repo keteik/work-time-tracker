@@ -5,5 +5,4 @@ export const admins = [
   },
 ];
 export const employeeIds = ['1234'];
-export const passwordResetVerificationCode =
-  '123456';
+export const passwordResetVerificationCode = '123456';
